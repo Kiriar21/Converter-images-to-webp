@@ -1,0 +1,32 @@
+{
+  "name": "converter-images-to-webp",
+  "version": "1.0.0",
+  "description": "Fast and elastic program to extension change images (to webp). Only paste your images to src and run script. Get you images and statistic about each of images.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kiriar21/Converter-images-to-webp.git"
+  },
+  "keywords": [
+    "fast",
+    "convert",
+    "img/png",
+    "to",
+    "webp"
+  ],
+  "author": "Kiriar21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kiriar21/Converter-images-to-webp/issues"
+  },
+  "homepage": "https://github.com/Kiriar21/Converter-images-to-webp#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "sharp": "^0.33.5"
+  }
+}
