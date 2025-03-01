@@ -8,8 +8,8 @@ const config = {
     outputDir: './out', 
     quality: 80, //(0-100)
     resize: { // null - without change
-        // width: 800, 
-        // height: 600 
+        width: 1920, 
+        height: 1080 
     },
     filenamePrefix: 'image_', 
     filenameSuffix: '', 
@@ -22,14 +22,16 @@ async function convertToWebP(inputPath, outputPath, counter) {
         const originalStats = fs.statSync(inputPath); 
 
         let image = sharp(inputPath)
-            .webp({ quality: config.quality }) 
-            .withMetadata() 
-            .removeAlpha() // Delete alpha channel if exist
-            .normalize(); // Normalize colors
-
+        .webp({ 
+            quality: config.quality,
+            lossless: false, // Change to true if you want lossless compression
+        }) 
+        // .removeAlpha() // Delete alpha channel if exist - dont use that if you need transparency
+        // .normalize(); // Normalize colors
+        
         // If resize is set
         if (config.resize.width && config.resize.height) {
-            image = image.resize(config.resize.width, config.resize.height);
+            image = image.resize(config.resize.width, config.resize.height, {fit: 'inside'});
         }
 
         // Filename
@@ -60,7 +62,7 @@ async function convertToWebP(inputPath, outputPath, counter) {
             finalSize: finalStats.size,
             sizeChange,
             sizeChangePercent,
-            reducedSize: sizeChange > 0
+            reducedSize: sizeChange < 0
         };
 
     } catch (error) {
