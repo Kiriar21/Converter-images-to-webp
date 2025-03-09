@@ -8,8 +8,8 @@ const config = {
     outputDir: './out', 
     quality: 80, //(0-100)
     resize: { // null - without change
-        width: 1920, 
-        height: 1080 
+        width: 1024, 
+        height: 768 
     },
     filenamePrefix: 'image_', 
     filenameSuffix: '', 
@@ -77,7 +77,7 @@ async function convertToWebP(inputPath, outputPath, counter) {
 // Function to convert multiple images
 async function convertMultipleImages(inputDir, outputDir) {
     const files = fs.readdirSync(inputDir);
-    const images = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file)); 
+    const images = files.filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file)); 
 
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir); 
